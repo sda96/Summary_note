@@ -1,0 +1,9 @@
+mysql -uroot -p
+show databases; 
+create database db1;
+drop db1;
+use db1;
+show tables;
+desc user;
+create table if not exist tb1;
+exit user;
