@@ -7,3 +7,5 @@ show tables;
 desc user;
 create table if not exist tb1;
 exit user;
+
+select @@datadir 현재 경로
