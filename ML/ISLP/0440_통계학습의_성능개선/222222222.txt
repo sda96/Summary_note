@@ -1,0 +1,17 @@
+zero order =  대표값 하나로 종속변수를 설명가능하다 
+first order = 모든 상호작용항이 종속변수에 영향을 준다
+second order = 두 독립변수로 하나의 상호작용항을 만들고 
+third = 3개 독립변수 하나의 상호작용항
+
+high order = 3개 이상 in 딥러닝
+
+
+후진제거법, 전진선택법 선택시 위의 내용들을 고려한다.
+one-hot-encoding 쓰는이유 : 범주형변수를 모델이 학습가능한 형태인 binary값으로 바꾸기 위함 : 설명추가하기
+sparse categorical
+pd.categorical로 categorical 자료형으로 바꿔준뒤 keras sparsecategorical
+
+
+
+인코딩 (비정형데이터의 코드화) -> 의미를 담은 인코딩(임베딩)
+https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02 <- 인코딩기법

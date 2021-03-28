@@ -134,7 +134,7 @@ git reset HEAD <- git add 내용 취소
 git log를 나가는 방법은 q를 누르면 됨
 git push, pull 을 사용하면 merge 편집기는 shift zz를 누르면 나가짐, :wq 를 사용하면 저장하고 편집기를 나감
 
-
+(https://gmlwjd9405.github.io/2018/05/25/git-add-cancle.html) git add, git commit, git push 내용 취소
 
 
 Conda 가상환경
@@ -154,3 +154,6 @@ conda install package-name=2.3.4 -n some-environment <- 특정 가상환경에 �
 remote: Repository not found 에러 발생, 단 privacy repo에 push 하는 경우 collaborator 추가
 참고 사이트 --- https://o-yeon.tistory.com/90
 초대 보내면 초대한 아이디의 등록 이메일주소로 초대장 보냄
+
+
+

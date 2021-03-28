@@ -1,0 +1,90 @@
+import re
+import urllib3
+import json
+
+
+def cleantext(text):
+  enter = re.compile("[^A-z|가-힣|0-9]+")
+  clean_text = enter.sub(" ",text)
+  return clean_text
+
+def ETRI_korBERT(text,query) :
+    openApiURL = "http://aiopen.etri.re.kr:8000/MRCServlet"
+    accessKey = "47e7b5dc-bdee-41ab-bb4a-e5d9b2fb91e0"
+    question = query
+    passage = text
+     
+    requestJson = {
+    "access_key": accessKey,
+        "argument": {
+            "question": question,
+            "passage": passage
+        }
+    }
+     
+    http = urllib3.PoolManager()
+    response = http.request(
+        "POST",
+        openApiURL,
+        headers={"Content-Type": "application/json; charset=UTF-8"},
+        body=json.dumps(requestJson)
+    )
+    return json.loads(str(response.data,"utf-8"))['return_object']['MRCInfo']['answer']
+
+def ETRI_wiki(text) :
+    openApiURL = "http://aiopen.etri.re.kr:8000/WiseQAnal"
+    accessKey = "47e7b5dc-bdee-41ab-bb4a-e5d9b2fb91e0"
+    text = text
+
+    requestJson = {
+        "access_key": accessKey,
+        "argument": {
+            "text": text
+        }
+    }
+
+    http = urllib3.PoolManager()
+    response = http.request(
+        "POST",
+        openApiURL,
+        headers={"Content-Type": "application/json; charset=UTF-8"},
+        body=json.dumps(requestJson)
+    )
+    response_json = json.loads(str(response.data,"utf-8"))
+    response_Extract_A = response_json['return_object']['orgQInfo']['orgQUnit']
+    if not response_Extract_A['vTitles'] :
+        content = "위키에 없는 문서입니다."
+        return content
+    response_Extract_B = response_Extract_A['vQTopic'][0]['vEntityInfo']
+    response_Extract_C = response_Extract_B[0]['strExplain']
+    return response_Extract_C
+
+def ETRI_POS_Tagging(text) :
+    openApiURL = "http://aiopen.etri.re.kr:8000/WiseNLU"
+    accessKey = "47e7b5dc-bdee-41ab-bb4a-e5d9b2fb91e0"
+    analysisCode = "ner"
+    requestJson = {
+        "access_key": accessKey,
+        "argument": {
+            "text": text,
+            "analysis_code": analysisCode
+        }
+    }
+    http = urllib3.PoolManager()
+    response = http.request(
+        "POST",
+        openApiURL,
+        headers={"Content-Type": "application/json; charset=UTF-8"},
+        body=json.dumps(requestJson)
+    )
+    return Pos_extract(response)
+
+def Pos_extract(Data) :
+    Noun = []
+    Extract_a = json.loads(str(Data.data,"utf-8"))['return_object']['sentence']
+    for i in range(len(Extract_a)) : 
+        Extract_b = dict(Extract_a[i])
+        for i in range(len(Extract_b['morp'])) : 
+            if (Extract_b['morp'][i]['type'] =='NNG' or Extract_b['morp'][i]['type'] =='NNP') or Extract_b['morp'][i]['type'] =='VV': 
+                Noun.append(Extract_b['morp'][i]['lemma'])
+    return " ".join(Noun)
