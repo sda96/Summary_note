@@ -1,6 +1,14 @@
 pip은 파이썬의 패키지 관리자 입니다.
 pip install -r requirements.txt
 
+콘다 가상환경에서 idle를 여는 방법입니다.
+activate myenv
+python -m idlelib
+
+콘다 가상환경에서 파이썬 버전 바꾸기
+conda activate my_env
+conda install python=3.6
+
 가상환경은 패키지 관리에 용이한 방법입니다.
 
 아나콘다는 데이터 과학, 머신러닝에 필요한 패키지들이 설치되어있는 도구로 
