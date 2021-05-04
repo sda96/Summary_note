@@ -1,5 +1,4 @@
-# dfs
-graphs = [
+adj_matrix = [
   [],
   [2,3,8],
   [1,7],
@@ -10,15 +9,17 @@ graphs = [
   [2,6,8],
   [1,7]
 ]
-visited = [False for i in range(len(graphs))]
 
+visited = [False]*9
+# 시작점 v
 def dfs(graph, v, visited):
-  # 현재 노드를 방문 처리
   visited[v] = True
-  print(v, end=" ")
-  # 현재 노드와 연결된 다른 노드를 재귀적으로 방문
+  # [2,3,8]속에서 하나씩 True인지 확인
+  # graph[1] = [2,3,8]
+  print(v, graph[v])
+  # 하나의 탐색이 끝나면 다시 1로 돌아와 다른 길로 탐색 실시
   for i in graph[v]:
     if not visited[i]:
       dfs(graph, i, visited)
-
-dfs(graphs, 1, visited)
+    
+print(dfs(adj_matrix, 1, visited))
