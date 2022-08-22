@@ -13,7 +13,7 @@ conda info --envs <- 현재 사용가능한 커널명과 위치 출력
     - conda search <- 설치된 패키지 조회
     - conda remove [패키지명] <- 설치된 패키지 삭제
     - conda clean --all <- 캐시삭제 ./Anaconda3/pkgs에 있는 것들 삭제
-
+    - conda info --envs <- 현재 만들어진 가상환경 이름과 경로를 출력
 커널연결오류
 [IPKernelApp] ERROR | Failed to load connection file:
 ImportError: DLL load failed while importing win32api: 지정된 모듈을 찾을 수 없습니다.
@@ -38,6 +38,8 @@ conda install python=3.6
 
 아나콘다는 데이터 과학, 머신러닝에 필요한 패키지들이 설치되어있는 도구로 
 가상환경이 제공하는 기능을 가지고 있습니다.
+
+
 
 
 참고자료
