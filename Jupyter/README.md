@@ -14,10 +14,11 @@ conda info --envs <- 현재 사용가능한 커널명과 위치 출력
     - conda remove [패키지명] <- 설치된 패키지 삭제
     - conda clean --all <- 캐시삭제 ./Anaconda3/pkgs에 있는 것들 삭제
     - conda info --envs <- 현재 만들어진 가상환경 이름과 경로를 출력
-커널연결오류
-[IPKernelApp] ERROR | Failed to load connection file:
-ImportError: DLL load failed while importing win32api: 지정된 모듈을 찾을 수 없습니다.
-위의 에러 발생시 conda install pywin32 -n [환경명] 로 해결
+
+커널연결오류  
+[IPKernelApp] ERROR | Failed to load connection file:  
+ImportError: DLL load failed while importing win32api: 지정된 모듈을 찾을 수 없습니다.  
+위의 에러 발생시 conda install pywin32 -n [환경명] 로 해결  
 
 fatal error C1083: Cannot open include file: 'zmq.h': No such file or directory
 pip install pyzmq
